@@ -1,0 +1,11 @@
+<block  wx:for="{{s}}" wx:for-item="item" wx:for-index='key'>
+<!--<text>{{item['data-dm']}}</text>
+<text>{{item['data-up']}}</text>
+<text>{{item['data-sc']}}</text>
+<text>{{item['data-text']}}</text>
+<text>{{item['data-tg']}}\n \n</text>
+<text>葫芦娃第一季-妖雾重回</text>-->
+ 
+<video id="myVideo" src=""
+danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+</block >

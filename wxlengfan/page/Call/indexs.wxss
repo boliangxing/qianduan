@@ -1,0 +1,31 @@
+textarea {
+    width: 500rpx;
+    padding: 25rpx 0;
+}
+.textarea-wrp {
+    padding: 0 25rpx;
+    background-color: #fff;
+    float:right
+}
+.user-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 200rpx;
+    box-shadow: 0 0 300rpx 100rpx rgba(255, 255, 255, .2), 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+text{
+
+font-size: 25rpx;
+color:#ccc;
+
+}
+.search .search-input{
+  position: absolute;
+  top: 550px;
+  display: inline-block;
+  background-color:white;
+border-radius:5px;
+ 
+ 
+  padding: 40rpx 75rpx 20rpx 30rpx;
+}

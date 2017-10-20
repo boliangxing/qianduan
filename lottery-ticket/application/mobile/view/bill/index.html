@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+</head>
+<body>
+
+<div class="page-group" id="bill">
+
+    <div class="page" id="one-page">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+            <h1 class="title">下单</h1>
+        </header>
+        <div class="content">
+
+            <div class="card">
+                <div class="card-header">配置</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+
+                        <div class="list-block">
+                            <ul>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">是否拍照</div>
+                                            <div class="item-input">
+                                                <label class="label-switch">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox" id="one-take-pic"></div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">是否送家</div>
+                                            <div class="item-input">
+                                                <label class="label-switch">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox" id="one-send-home"></div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card" style="display: none" id="one-receive-site">
+                <div class="card-header">收货地址 <i class="icon-map-marker"></i></div>
+                <div class="card-content">
+                    <div class="card-content-inner" id="one-receive">
+
+                        {{if condition="$nowSite neq null"}}
+                        <p>
+
+                            <span class="bold">{{$nowSite->contact_name}}</span>
+                            {{$nowSite->gender|gender}}{{$nowSite->contact_phone}}
+
+                        </p>
+                        <p>
+                            {{$nowSite->site_title}}<span class="sm-title">{{$nowSite->site_address}}</span>
+                            <input type="hidden" value="{{$nowSite->id}}" class="id">
+                        </p>
+                        {{else /}}
+                        请选择收货地址
+                        {{/if}}
+
+
+                    </div>
+                </div>
+            </div>
+            <!--<div class="card-bottom"></div>-->
+        </div>
+
+        <div class="bar bar-footer" style="height: 2.5rem;">
+            <form id="order-form" method="post" action="{{:url('pay/takeOrder')}}">
+                <input type="hidden" name="goods_info" id="goods_info">
+                <input type="hidden" name="is_take_pic" id="is_take_pic">
+                <input type="hidden" name="is_send_home" id="is_send_home">
+                <input type="hidden" name="now_point" id="now_point">
+                <input type="hidden" name="receive_site" id="receive_site">
+                {{:token()}}
+            </form>
+            <div style="margin-top: 0.3rem">
+                <span class="icon pull-left" style="font-size: 0.70rem;font-weight: normal;color: #929292">待支付
+                    <!--<span class="red" id="bill-total-fee">{{//$show_total_fee}}</span>元</span>-->
+                    <span class="red" id="bill-total-fee">0</span>元</span>
+                <a class="my-button my-button-primary pull-right" id="one-take-order">确认下单</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="two-page">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+            <h1 class='title'>收货地址</h1>
+        </header>
+        <div class="content">
+
+            <div id="two-card-list">
+                {{volist name="custom_site" id="item"}}
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-content-inner">
+                            <div class="row">
+                                <div class="col-90">
+                                    <p>
+
+                                        <span class="bold">{{$item->contact_name}}</span>
+                                        {{$item->gender|gender}}{{$item->contact_phone}}
+
+                                    </p>
+                                    <p>
+                                        {{$item->site_title}}<span class="sm-title">{{$item->site_address}}</span>
+                                        <input type="hidden" value="{{$item->id}}" class="id">
+                                    </p>
+                                </div>
+                                <div class="col-10">
+                                    <span class="icon-trash" onclick='delSiteConfirm("{{$item->id}}",this);'></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                {{/volist}}
+            </div>
+
+            <div class="card-bottom"></div>
+
+        </div>
+
+        <nav class="bar bar-footer">
+            <h1 class='title' id="two-add-site"><i class="icon-plus-sign"></i> 新增地址</h1>
+        </nav>
+
+    </div>
+
+    <div class="page" id="three-page">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+            <h1 class='title'>新增地址</h1>
+        </header>
+        <div class="content">
+            <div class="list-block">
+                <ul>
+                    <!-- Text inputs -->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">联系人</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="姓名" id="three-name">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">性别</div>
+                                <div class="item-input">
+                                    <select id="three-sex">
+                                        <option value="1">先生</option>
+                                        <option value="2">女士</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">手机</div>
+                                <div class="item-input">
+                                    <input type="number" placeholder="手机号" id="three-tel">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">地址</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="选择收货地址" id="three-receive-site">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">详细地址：</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="如门牌号等" id="three-detail-site">
+                                    <input type="hidden" id="three-xy">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100"><a class="button button-big button-fill button-success" id="three-sub">提交</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id='four-page'>
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+            <h1 class='title'>地址</h1>
+        </header>
+        <div class="content">
+
+
+            <div class="list-block" style="margin: 0.1rem 0">
+                <ul>
+
+                    <!--<li>-->
+                    <!--<div class="item-content">-->
+                    <!--<div class="item-media"><i class="icon-map-marker"></i></div>-->
+                    <!--<div class="item-inner">-->
+                    <!--<div class="item-input">-->
+                    <!--<input type="text" placeholder="请选择城市信息" id="four-select-city">-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</li>-->
+
+
+                    <!--<li>-->
+                    <!--<div class="item-content">-->
+                    <!--<div class="item-media"><i class="icon-map-marker"></i></div>-->
+                    <!--<div class="item-inner">-->
+                    <!--<div class="item-input">-->
+                    <!--<input type="text" placeholder="地址" id="four-search-word">-->
+                    <!--<input type="hidden" id="1">-->
+                    <!--<input type="hidden" id="2">-->
+                    <!--<input type="hidden" id="3">-->
+                    <!--<input type="hidden" id="4">-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</li>-->
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon-map-marker"></i></div>
+                            <div class="item-inner">
+                                <div class="col-75">
+                                    <div class="item-input">
+                                        <input type="text" placeholder="地址" id="four-search-word">
+                                        <!--<input type="hidden" id="1">-->
+                                        <!--<input type="hidden" id="2">-->
+                                        <!--<input type="hidden" id="3">-->
+                                        <!--<input type="hidden" id="4">-->
+                                    </div>
+                                </div>
+                                <div class="col-25">
+                                    <div class="item-input">
+                                        <a class="button" id="four-search">搜索</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div id="four-card-list">
+
+            </div>
+            <div class="card" id="four-no-result" style="display: none">
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        没有检索结果,请确认地址是否正确
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

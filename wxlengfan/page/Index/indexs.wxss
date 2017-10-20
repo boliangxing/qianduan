@@ -1,0 +1,133 @@
+/* indexs.wxss */
+button{
+  margin-bottom: 30rpx;
+}
+button:last-child{
+  margin-bottom: 0;
+}
+.page-section-title{
+  padding: 0;
+}
+.swiper-item{
+  display: block;
+  height: 150px;
+}
+.page-section-title{
+  margin-top: 60rpx;
+  position: relative;
+}
+.info{
+  position: absolute;
+  right: 0;
+  color: #353535;
+  font-size: 30rpx;
+}
+
+.navbar{  
+  flex: none;  
+  display: flex;  
+  background: #fff;  
+}  
+.navbar .item{  
+  position: relative;  
+  flex: auto;  
+  text-align: center;  
+  line-height: 80rpx;  
+  font-size: 15px;
+  font-weight:bold
+}  
+.navbar .item.active{  
+  color: #888888;  
+}  
+.navbar .item.active:after{  
+  content: "";  
+  display: block;  
+  position: absolute;  
+  bottom: 0;  
+  left: 0;  
+  right: 0;  
+  height: 4rpx;  
+  background: #888888;  
+}  
+
+ .swiper{
+   width:100%;
+ 
+ }
+.swiper image {
+   
+  width: 100%;
+}
+
+    .find-car-header {
+        position: absolute;
+        top: 240px;
+        left: 0;
+        z-index: 9999;
+        width: 690rpx;
+        height: 88rpx;
+        padding: 0 30rpx;
+        background-color: #eee;
+        border-bottom: 2rpx solid #d2d2d2;
+    }
+    .tab {
+        float: left;
+        width: 330rpx;
+        height: 88rpx;
+    }
+    .tab .tab-item {
+        float: left;
+        width: 140rpx;
+        height: 88rpx;
+        font-size: 30rpx;
+        line-height: 88rpx;
+        text-align: center;
+        color: #333;
+        font-weight: bold;
+    }
+    .tab .tab-item:first-child {
+        margin-right: 50rpx;
+    }
+    .tab .active {
+        position: relative;
+        color: #888888;
+    }
+    .tab .active:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 4rpx;
+        content: '';
+        background: #888888;
+    }
+    .content {
+        z-index: 0;
+        width: 750rpx;
+        height: 100%;
+        box-sizing: border-box;
+    }
+    .swiper-item {
+        position: absolute;
+        top:50px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    .letter-brand-list {
+        width: 720rpx;
+        padding-left: 30rpx;
+        background-color: #fff;
+    }
+    .letter-brand-item {
+        width: 690rpx;
+        height: 180rpx;
+        padding: 10rpx 30rpx 10rpx 0;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 28rpx;
+        line-height: 90rpx;
+        color: #333;
+    }
+    .letter-brand-list .letter-brand-item:last-child {
+        border: 0;
+    }

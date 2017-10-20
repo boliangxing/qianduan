@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="__MOBILE__/css/sm.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/sm-extend.min.css">
+
+    <!--<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">-->
+    <!--<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">-->
+
+    <link rel="stylesheet" href="__MOBILE__/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/app.css">
+    <link rel="stylesheet" href="__MOBILE__/css/my-buttons.css">
+    <script type="text/javascript" src="https://api.map.baidu.com/api?ak=rwDPE8PpQTK3PLMdYPhRG5pC&v=2.0&s=1"></script>
+</head>
+<body>
+
+<div class="page-group" id="ssq">
+    <div class="page page-current" id="bet-page">
+        <header class="bar bar-nav" style="background-color: #ff2222;">
+            <a class="button button-link button-nav pull-left external" href="{{:url('main/index')}}"
+               style="color: white">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+
+            <h1 class="title open-about play-type" style="color: white" id="chose-type"><span
+                    id="chose-lottery-type"></span>-<span
+                    id="chose-play-type"></span>
+                <span class="icon-caret-down"></span>
+                <input type="hidden" value="{{$lotteryType}}" id="lottery-type">
+                <input type="hidden" value="直选" id="play-type">
+            </h1>
+
+            <a class="button button-link button-nav pull-right" style="margin-right: 0.05rem">
+                <span class="open-popup" data-popup=".popup-history" style="color: white">历史</span>
+            </a>
+        </header>
+
+        <div class="content">
+            <div class="row">
+                <div class="col-100" style="height: 1.7rem;">
+                    <span class="title" style="font-size: .70rem">第<span
+                            id="period">{{$history[0]->issueno+1}}</span>期 投注截至：
+                        <span class="t_d">00天</span>
+                        <span class="t_h">00小时</span>
+                        <span class="t_m">00分</span>
+                        <span class="t_s">00秒</span>
+                    </span>
+                </div>
+            </div>
+
+            <div id="noArea">
+
+
+            </div>
+
+
+            <div style="height: 5rem"></div>
+
+        </div>
+
+
+        <div class="bar bar-footer-secondary" style="height: 2.5rem;background-color: white">
+
+            <div class="pull-left" style="line-height: 2.2rem">
+
+                <div id="prompt" style="color: #999;font-size: 0.7rem;"></div>
+
+                <a class="my-button my-button-small my-button-border my-button-caution" id="ball-machine-one">机选一注</a>
+            </div>
+            <div class="pull-right" style="line-height: 2.2rem">
+                <a class="my-button my-button-small my-button-border my-button-caution" id="bet-col">投注栏
+                    <span id="bet-col-num">0</span></a>
+            </div>
+
+        </div>
+
+
+        <div class="bar bar-footer" style="height: 2.5rem;background-color: #3c3c3c">
+            <div style="margin-top: 0.3rem">
+                <a class="button button-dark pull-left" id="usual-remove-one"><span class="icon-trash"></span></a>
+                <span class="icon pull-left" style="font-size: 0.70rem;font-weight: normal;color: #929292">共<span
+                        class="red" id="ball-bet-num">0</span>注</span>
+                <a class="my-button my-button-caution pull-right" id="bet">投注</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page" id="bet-col-page">
+        <header class="bar bar-nav" style="background-color: #ff2222;">
+            <a class="button button-link button-nav pull-left back" id="bet-col-back" style="color:white">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+
+            <h1 class="title" style="color:white">投注栏</h1>
+
+            <a class="button button-link button-nav pull-right" style="color:white" href="{{:url('bill/car')}}"
+               data-no-cache="true">
+                <span class="icon-shopping-cart icon-large"></span>
+                <!--购物车-->
+            </a>
+
+        </header>
+        <div class="content">
+            <nav class="nav bar-nav" style="margin: 0.5rem 0.5rem 0 0.5rem">
+                <div class="row">
+                    <div class="col-50">
+                        <a class="button" id="bet-col-machine-one">机选一注</a>
+                    </div>
+                    <div class="col-50">
+                        <a class="button" id="bet-col-machine-five">机选五注</a>
+                    </div>
+                </div>
+            </nav>
+            <div id="no-card-list">
+
+            </div>
+
+
+            <div class="card-col-bottom"></div>
+
+        </div>
+
+
+        <div class="bar bar-footer-secondary" style="height: 2.5rem;background-color: white">
+            <span class="hint-font" style="line-height: 2.2rem;">倍数：</span>
+            <button class="my-button my-button-small my-button-raised" id="add-mul"><i class="icon-plus"></i></button>
+            <input type="text" id="mul" class="" style="width: 50px" value="1">
+            <button class="my-button my-button-small my-button-raised" id="less-mul"><i class="icon-minus"></i></button>
+        </div>
+
+
+        <div class="bar bar-footer" style="height: 2.5rem;background-color: #3c3c3c">
+            <div style="margin-top: .3rem">
+                <a class="button button-dark pull-left" id="remove-all"><span class="icon-trash"></span></a>
+                <span class="icon pull-left" style="font-size: 0.70rem;font-weight: normal;color: #929292">共<span
+                        class="red" id="total-bet">0</span>注 <span class="red" id="total-fee">0</span>元</span>
+                <div class="pull-right" style="line-height: 2rem">
+                    <a class="my-button my-button-caution  my-button-small" id="bet-col-car"
+                       style="padding:0 .5rem">加入购物车</a>
+                    <a class="my-button my-button-caution my-button-small" id="bet-col-buy"
+                       style="padding:0 .5rem">立即购买</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<!-- About Popup -->
+<div class="popup popup-login">
+    <div class="content-block">
+
+        <div class="list-block">
+            <ul>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">手机号</div>
+                            <div class="item-input">
+                                <input type="number" placeholder="请输入手机号" id="login-phone">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-password"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">密码</div>
+                            <div class="item-input">
+                                <input type="password" placeholder="请输入密码" id="login-password">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+        <div class="content-block">
+            <div class="row">
+                <div class="col-50"><a class="button button-big button-fill button-danger" id="login-btn">登录</a></div>
+                <div class="col-50"><a class="button button-big button-fill button-success close-popup">取消</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup popup-history">
+    <div class="content-block">
+        <div class="content">
+            <div class="content-block-title">历史开奖信息</div>
+
+            <div class="list-block">
+                <ul>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title" style="padding-left: 1rem;font-weight: bold;font-size: .8rem">期号
+                            </div>
+                            <div class="item-after" style="padding-right: 2rem;font-weight: bold;font-size: .8rem">
+                                开奖号码
+                            </div>
+                        </div>
+                    </li>
+                    {{volist name="history" id="item"}}
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">{{$item->issueno}}</div>
+                            <div class="item-after"><span class="red">{{$item->number}}</span>
+                                {{if condition=" $item->refernumber neq '' "}}
+                                +<span class="blue">{{$item->refernumber}}</span></div>
+                            {{/if}}
+                        </div>
+                    </li>
+                    {{/volist}}
+                </ul>
+                <a class="button button-fill close-popup">关闭</a>
+            </div>
+            <!--<div class="content-block">-->
+
+            <!--</div>-->
+
+        </div>
+    </div>
+</div>
+
+<!--<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>-->
+<!--<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>-->
+<!--<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>-->
+
+<script type='text/javascript' src="__MOBILE__/js/zepto.min.js" charset='utf-8'></script>
+<script type='text/javascript' src="__MOBILE__/js/sm.min.js" charset='utf-8'></script>
+<script type='text/javascript' src='__MOBILE__/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="__MOBILE__/js/lodash.min.js"></script>
+<script src="__MOBILE__/js/rule.js"></script>
+<script src="__MOBILE__/js/ball.js"></script>
+<script src="__MOBILE__/js/car.js"></script>
+<script src="__MOBILE__/js/bill.js"></script>
+
+
+<script>
+    $(function () {
+        $.init();
+        var endTime = "{{$end_time}}";
+
+        function getRTime() {
+            var EndTime = new Date(endTime);
+            var NowTime = new Date();
+            var t = EndTime.getTime() - NowTime.getTime();
+            var d = Math.floor(t / 1000 / 60 / 60 / 24);
+            t -= d * (1000 * 60 * 60 * 24);
+            var h = Math.floor(t / 1000 / 60 / 60);
+            t -= h * 60 * 60 * 1000;
+            var m = Math.floor(t / 1000 / 60);
+            t -= m * 60 * 1000;
+            var s = Math.floor(t / 1000);
+            /*
+             var d=Math.floor(t/1000/60/60/24);
+             var h=Math.floor(t/1000/60/60%24);
+             var m=Math.floor(t/1000/60%60);
+             var s=Math.floor(t/1000%60);
+             */
+            $(".t_d").text(d + "天");
+            $(".t_h").text(h + "小时");
+            $(".t_m").text(m + "分");
+            $(".t_s").text(s + "秒");
+        }
+
+        time_index = setInterval(getRTime, 1000);
+    });
+</script>
+
+</body>
+</html>

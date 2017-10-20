@@ -1,0 +1,30 @@
+ 
+.shaoyishao{
+  display: inline-block;
+  background: pink;
+   height: 30px;
+   width:30px
+}
+.search view{
+  display: inline-block;
+}
+.search .search-input{
+  display: inline-block;
+  background-color:white;
+border-radius:5px;
+  height: 30rpx;
+  padding: 40rpx 75rpx 20rpx 30rpx;
+}
+ 
+ 
+.search-select{
+  display: inline-block
+}
+.local{
+  display: block;
+  border: 1px #888888 solid;
+  border-radius: 3px;
+  background-color: #eee;
+ 
+}
+ 

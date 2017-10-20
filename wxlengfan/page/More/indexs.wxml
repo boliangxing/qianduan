@@ -1,0 +1,37 @@
+ <import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+
+
+ <view class="container">
+    <view class="user-info" >
+       
+        <image class="user-avatar" src="{{userinfo2.avatarUrl}}"></image>
+        <view class="user-nickname">
+           {{userinfo2.nickName}} 
+        <block >
+                <view class="user-sex-male"></view>
+            </block> 
+            <!-- <block >
+                <view class="user-sex-female"></view>
+            </block> -->
+        </view>
+        <view class="user-location">{{userinfo2.country}}</view>
+    </view>
+
+    <!-- <view class="grids">
+        <block>
+            <view class="grid" >
+                <view ></view>
+                <view class="grid-title">{{gridItem.zhName}}</view>
+            </view>
+
+        </block>
+ </view> --></view> 
+<!-- <view>openid:{{userinfo.openid}}</view>
+<view>nickName:{{userinfo2.nickName}}</view>
+<view>gender:{{userinfo2.gender}}</view>
+<view>language:{{userinfo2.language}}</view>
+<view>city:{{userinfo2.city}}</view>
+<view>country:</view>
+ 
+<image src="{{userinfo2.avatarUrl}}"></image> -->

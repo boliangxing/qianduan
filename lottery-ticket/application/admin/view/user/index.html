@@ -1,0 +1,92 @@
+{{extend name="layout" /}}
+
+{{block name="css"}}
+<link rel="stylesheet" href="__ADMIN__/bower_components/bootstrap-table-master/dist/bootstrap-table.min.css">
+{{/block}}
+{{block name="sidebar-menu"}}
+<!-- Sidebar Menu -->
+<ul class="sidebar-menu" data-widget="tree">
+    <!--<li class="header">HEADER</li>-->
+    <!-- Optionally, you can add icons to the links -->
+
+
+    <li>
+        <a href="{{:url('bill/index')}}"><i class="fa fa-shopping-cart"></i> 订单管理</a>
+    </li>
+    <li>
+        <a href="{{:url('supplier/index')}}"><i class="fa fa-user-secret"></i> 商户管理</a>
+    </li>
+    <li  class="active">
+        <a href="{{:url('user/index')}}"><i class="fa fa-user"></i> 用户管理</a>
+    </li>
+</ul>
+{{/block}}
+
+{{block name="content"}}
+
+<section class="content-header">
+    <h1>
+        用户管理
+        <!--<small>Optional description</small>-->
+    </h1>
+    <!--<ol class="breadcrumb">-->
+    <!--<li><a href="#"><i class="fa fa-dashboard"></i> 商户管理</a></li>-->
+    <!--<li class="active">商户列表</li>-->
+    <!--</ol>-->
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+
+    <!--------------------------
+      | Your Page Content Here |
+      -------------------------->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <table id="table"></table>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+{{/block}}
+
+{{block name="js"}}
+
+<script src="__ADMIN__/bower_components/bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+<script src="__ADMIN__/bower_components/bootstrap-table-master/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="__ADMIN__/bower_components/layer-v3.0.3/layer/layer.js"></script>
+
+<script>
+    $(function () {
+        var url = "{{:url('user/search')}}";
+
+        $('#table').bootstrapTable({
+            classes: 'table table-hover', //bootstrap的表格样式
+            sidePagination: 'server', //获取数据方式【从服务器获取数据】
+            pagination: true, //分页
+            height: $(window).height() - 200, //表格高度
+            pageNumber: 1, //页码【第X页】
+            pageSize: 1, //每页显示多少条数据
+            queryParamsType: 'limit',
+            queryParams: function (params) {
+                return params;
+            },
+
+            url: url,
+            sortName: 'id',
+            sortOrder: 'ASC',
+            columns: [ //字段
+                {title: 'ID', field: 'id', align: 'left', width: '10%'},
+                {title: '用户名', field: 'telephone', align: 'left', width: '30%'},
+                {title: '状态', field: 'state', align: 'left', width: '30%'},
+                {title: '操作', field: 'operation', align: 'left', width: '30%'}
+            ]
+        });
+
+    });
+</script>
+
+{{/block}}
+

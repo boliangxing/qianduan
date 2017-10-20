@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__MOBILE__/css/sm.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/sm-extend.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/my-buttons.css">
+    <link rel="stylesheet" href="__MOBILE__/css/app.css">
+</head>
+<body>
+
+<div class="page-group">
+    <div class="page" id="center">
+        <header class="bar bar-nav">
+            <a class="icon icon-settings pull-right" href="#setting"></a>
+            <h1 class="title">个人中心</h1>
+            <a class="button button-link button-nav pull-left external" href="{{:url('main/index')}}">
+                <span class="icon icon-left"></span>
+                首页
+            </a>
+        </header>
+        <div class="content">
+            <div class="card">
+                <div class="card-header">用户信息</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <b style="font-size: .8rem">{{$custom->telephone}}</b>
+                        欢迎使用彩票代买平台
+                    </div>
+                </div>
+                <!--<div class="card-footer">卡脚</div>-->
+            </div>
+
+            <div class="buttons-tab">
+                <a href="#tab1" class="tab-link active button">已完成</a>
+                <a href="#tab2" class="tab-link button">待付款</a>
+                <!--<a href="#tab3" class="tab-link button">中奖记录</a>-->
+            </div>
+            <div class="content-block" style="padding: 0 .1rem;margin: .1rem 0">
+                <div class="tabs">
+                    <div id="tab1" class="tab active">
+                        <div class="content-block" style="padding: 0 .1rem;margin: 0.5rem 0">
+
+                            {{volist name="order" id="item"}}
+                            <div class="card">
+                                <div class="card-content">
+
+                                    <div class="list-block media-list">
+                                        <ul>
+                                            <li class="item-content">
+                                                <div class="item-media">
+                                                    <button type="button"
+                                                            class="my-button my-button-circle my-button-caution">订单号
+                                                    </button>
+                                                    <!--<span style="display: block">双色球</span>-->
+                                                </div>
+                                                <div class="item-inner" style="font-size: 0.5rem">
+                                                    <div class="item-title-row">
+                                                        <div class="item-title">
+                                                            订单号：{{$item->order_no}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-subtitle">交易金额：{{$item->real_pay}}元</div>
+                                                </div>
+                                                <div class="item-media" style="margin-right: 0.5rem"><i
+                                                        class="icon-angle-right"
+                                                        style="font-size: 1.5rem;color:#999"></i></div>
+                                                <input type="hidden" value="{{$item->id}}" class="order_id">
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/volist}}
+
+
+                            {{if condition="$loadIsShow"}}
+                            <div id="load-more" style="height: 1.5rem;background-color: #d7d7d7;text-align: center">
+                                点击加载更多
+
+                            </div>
+                            {{/if}}
+
+
+                        </div>
+                    </div>
+                    <div id="tab2" class="tab">
+                        <div class="content-block">
+
+
+                        </div>
+                    </div>
+                    <div id="tab3" class="tab">
+                        <div class="content-block">
+                            <p>This is tab 3 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="page" id="setting">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+            <h1 class="title">个人中心</h1>
+        </header>
+        <div class="content">
+            <div class="list-block contacts-block">
+                <div class="list-group">
+                    <ul>
+                        <li class="list-group-title">A</li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title"><a href="{{:url('account/index')}}#forget">修改密码</a></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list-group">
+                    <ul>
+                        <li class="list-group-title">T</li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title"><a href="{{:url('account/loginOut')}}"
+                                                               class="external">退出登录</a></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="detail">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+            <h1 class="title">个人中心</h1>
+        </header>
+
+        <div class="content">
+            <div class="list-block" style="margin: .5rem 0">
+                <ul>
+
+                    <li class="item-content">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">下单日期</div>
+                            <div class="item-after">2017-08-10 10:41:00</div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">订单号</div>
+                            <div class="item-after">20170000002563944</div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">交易金额</div>
+                            <div class="item-after">10 元</div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">商品类型</div>
+                            <div class="item-after">双色球</div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title">投注倍数</div>
+                            <div class="item-after">2</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script type='text/javascript' src="__MOBILE__/js/zepto.min.js" charset='utf-8'></script>
+<script type='text/javascript' src="__MOBILE__/js/sm.min.js" charset='utf-8'></script>
+<script src="__MOBILE__/js/account.js"></script>
+<script>
+    $(document).on('click', '#load-more', function () {
+        var start = $("#tab1 .card").length;
+        $.ajax({
+            type: 'POST',
+            data: {start: start, end: 5},
+            url: "{{:url('account/getOrder')}}",
+            success: function (result) {
+                if (result.code === 200) {
+                    $.each(result.data, function (index, item) {
+                        var html = '<div class="card">' +
+                            '<div class="card-content">' +
+                            '<div class="list-block media-list">' +
+                            '<ul> <li class="item-content">' +
+                            '<div class="item-media"> ' +
+                            '<button type="button" class="my-button my-button-circle my-button-caution">订单号</button> ' +
+                            '</div> <div class="item-inner" style="font-size: 0.5rem">' +
+                            ' <div class="item-title-row"> <div class="item-title">订单号：' + item.order_no + '</div> </div> ' +
+                            '<div class="item-subtitle">交易金额：' + item.real_pay + '元</div> </div> <div class="item-media" style="margin-right: 0.5rem">' +
+                            '<i class="icon-angle-right" style="font-size: 1.5rem;color:#999"></i></div>' +
+                            '<input type="hidden" value="' + item.id + '" class="order_id">' +
+                            ' </li> </ul> </div> </div> </div>';
+
+                        $("#load-more").before(html);
+                    });
+
+                    if (result.data.length <= 5) {
+                        $("#load-more").text('没有更多了');
+                    }
+
+                } else if (result.code === 201) {
+                    $("#load-more").text(result.data);
+                }
+
+            },
+            error: function () {
+                $.toast('请求失败');
+            }
+        });
+    });
+
+    $(document).on('click', '#tab1 .card', function () {
+        var oid = $(this).find(".order_id").val();
+        $.router.load('/index.php/mobile/account/detail/oid/' + oid, true);
+    });
+</script>
+</body>
+</html>

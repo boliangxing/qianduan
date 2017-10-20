@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__MOBILE__/css/sm.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/sm-extend.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/my-buttons.css">
+    <link rel="stylesheet" href="__MOBILE__/css/app.css">
+</head>
+<body>
+
+<div class="page-group">
+    <div class="page" id="main">
+        <header class="bar bar-nav">
+            <h1 class="title">通知</h1>
+        </header>
+        <div class="content">
+
+            <div class="card">
+                <div class="card-header">订单付款成功</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <p>外部订单号：{{$out_trade_no}}</p>
+                        <p>交易金额：{{$total_amount}} 元</p>
+                    </div>
+                </div>
+                <div class="card-footer"><a class="external" href="{{:url('main/index')}}">返回首页</a></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script type='text/javascript' src="__MOBILE__/js/zepto.min.js" charset='utf-8'></script>
+<script type='text/javascript' src="__MOBILE__/js/sm.min.js" charset='utf-8'></script>
+</body>
+</html>

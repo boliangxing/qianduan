@@ -1,0 +1,48 @@
+.p-title {
+    margin-top: -0.1rem;
+}
+
+.ball-table {
+    width: 100%;
+}
+
+.ball-table tr {
+    text-align: center;
+    line-height: 2rem;
+}
+
+.hint-font {
+    color: #999;
+    font-size: 0.70rem;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: #34a5f8;
+}
+
+.card-bottom {
+    margin: 1rem 0;
+    height: 1rem;
+}
+
+.card-col-bottom {
+    margin: 1rem 0;
+    height: 2.7rem;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.sm-title {
+    color: #999;
+    font-size: 0.6rem;
+}
+.card-bottom{
+    margin: 0.7rem 0;
+    height: 1rem
+}

@@ -1,0 +1,350 @@
+#brim-mask {
+    pointer-events: none;
+}
+
+#page {
+    padding-top: 44px;
+    background-color:#fff;
+    transition: all .3s ease;
+    overflow-x:hidden;
+}
+
+.show-menu {
+    transform: translateX($gap*40);
+}
+
+.page-cover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .4);
+    z-index: 7;
+}
+
+
+/*模块入口样式*/
+
+.posts-list {
+    background-color: $white;
+    li {
+        padding: 10px $padding;
+        border-bottom: $border;
+    }
+    h3 {
+        @extend .title;
+        &:before {
+            content: attr(title);
+            margin-right: 10px;
+            margin-top: -3px;
+            @extend .tag;
+            color: $white;
+        }
+        &.top:before {
+            background: #E74C3C;
+        }
+        &.ask:before {
+            background: #3498DB;
+        }
+        &.good:before {
+            background: #E67E22;
+        }
+        &.job:before {
+            background: #9B59B6;
+        }
+        &.share:before {
+            background: #1ABC9C;
+        }
+    }
+    .content {
+        padding-top: 10px;
+        @extend .display-flex; 
+    }
+    .avatar {
+       @extend .user-avatar;
+    }
+    .info {
+        @extend .flex;
+    }
+    p {
+        padding: 3px 0;
+        @extend .display-flex;
+        color: $text;
+        font-size: $font-info;
+
+        &:first-child {
+            font-size: $font-content; 
+        }
+        .name, time:first-child {
+           @extend .flex; 
+        }
+        b {
+            color: #42b983;
+        }
+    }
+}
+
+    .index{
+        width: 70%;
+        background-color: #fff;
+        margin-top: 40%;
+        margin-left: 0%;
+    }
+    
+    .page-bg { 
+        width: 100%; 
+        height: 100%; 
+        position: absolute; 
+        font-size: 100%; 
+        text-align: center; 
+    }
+    .page-1-1{
+        background:url('http://ww2.sinaimg.cn/large/6e6c8e97gw1f4gqummpy1g20hs0s0459.gif');
+        background-size:cover;
+        background-repeat:no-repeat;
+    }
+
+    .page-2-1{
+        background:url('http://ww4.sinaimg.cn/large/6e6c8e97gw1f4htwwbgssj20hs0vk0un.jpg');
+        background-size:cover;
+        background-repeat:no-repeat;
+    }
+    .page_desc {
+        text-align: center;
+        color: #888;
+        font-size: 14px;
+    }
+
+    button, input, select, textarea {
+      padding: 0;
+      margin: 0;
+      border: 0;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .container{
+        width: 100%;
+        margin:0 auto;
+        padding: 30px 0;
+    }
+    .container h3{
+        height: 40px;
+        line-height: 40px;
+        font-size: 18px;
+        color: #333333;
+        text-indent: 5px;
+    }
+
+    .main_icon{
+        position:relative;
+        height: 120px;
+        text-align:center;
+        margin:0 auto;
+    }
+
+    .label_icon{
+        margin-left:30px;
+        margin-right:12px;
+    }
+
+    .registform input{
+        -webkit-appearance: none;
+        width: 100%;
+        height: 38px;
+        font-size: 18px;
+        padding-left: 49px;
+        border:0px;
+        border-bottom:1px #CCCCCC solid;
+        background-color:transparent;
+        color: #fff;
+        border-radius: 0px;
+        -webkit-ransform: matrix(1, 0, 0, 1, 0, 0);
+    } 
+
+    .registform img{
+        position: absolute;
+        margin-left:15px;
+        margin-top:8px;
+    }
+
+    .formgroup{ 
+        position: relative;
+        margin-top: 20px;
+    }
+
+    #coupon_detail{
+        position:relative;
+        height: 100px;
+        text-align:center;
+        margin:0 auto;
+        margin-top: 20%;
+        border:solid white 1px;
+    }
+    #coupon_inside{
+        position:relative;
+        left:10px;
+        width:95%;
+        height:99px;
+        border-left:dashed white 1px;
+        border-right:dashed white 1px;
+        background-color: rgba(255,255,255,0.6);
+    }
+    #coupon_value{
+        position:relative;
+        left:8px;
+        top:10px;
+        width:30%;
+        z-index: 100;
+        height:75px;
+        background-color:#B5BBD3;
+        font-size:45px;
+        color:white;
+        text-align:center;
+        line-height:78px;
+        float:left;
+    }
+
+    #coupon_value_yuan{
+        position:absolute;
+        left:1px;
+        top:25px;
+        width:95%;
+        height:20px;
+        font-size:16px;
+        color:white;
+        text-align:right;
+    }
+
+    #coupon_explain{
+        position:relative;
+        left:0px;
+        top: 15px;
+        width:65%;
+        font-size:23px;
+        color:#333333;
+        text-align:left;
+        float:right;
+    }
+
+    #coupon_click{
+        font-size:17px;
+        color:#CCCCCC;
+    }
+    #coupon_date{
+        position:relative;
+        top: 22px;
+        font-size:15px;
+        color:#333333;
+    }
+
+    .g1{padding-right: 100px;}
+    .registform .g1 input{border-right: 0;}
+    .g2{padding-right: 50px;border: 1px solid #aaaaaa; }
+    .registform .g2 input{border: 0;}
+
+    #datatime{
+        position: relative;
+        margin-left:15px;
+    }
+    
+    #com_detail{
+        position: absolute;
+        left: 15px;
+        margin-top: 20px;
+        color:white;
+        letter-spacing:1px;
+        text-align:left;  
+
+    }
+    #codeButton{
+        position: absolute;
+        top: -20px;
+        right: 0;
+        z-index:999;
+        width: 27%;
+        height: 57px;
+        font-size: 18px;
+        background-color: rgba(0.3,0.1,0,0.2);
+        border-left:1px #CCCCCC solid;
+        color: #fff;
+    }
+    #codeButton[disabled]{
+        background-color: rgba(0.3,0.1,0,0.2);
+    }
+
+
+
+    .page-body {
+        padding: 20px 2px;
+        background-color: rgba(0.3,0.1,0,0.2);
+        .label{
+            display: inline-block;
+            width: 100%;
+            margin-top: 15px;
+            position: relative;
+            left: 0;
+            top: 0;
+
+            .title_forget {
+                text-decoration: underline;
+                position: absolute;
+                right: 1%;
+            }
+
+            .txt{
+                padding: 12px 0;
+                border:none;
+                border-bottom: 1px solid #00abec;
+                background-color: transparent;
+                width: 100%;
+                font-size: 15px;
+                color: #313131;
+            }
+            .button {
+                display: inline-block;
+                margin-top: 9px;
+                width: 100%;
+                height: 47px;
+                line-height: 47px;
+                border-radius: 3px;
+                color: #fff;
+                font-size: 19px;
+                background-color: #AC5BFF;
+                border: none;
+                border-bottom: 2px solid #AC5BFF;
+                text-align: center;
+                vertical-align: middle;
+            }
+            .validateTxt{
+                padding: 12px 0;
+                border:none;
+                border-bottom: 1px solid #00abec;
+                background-color: transparent;
+                width: 58%;
+                font-size: 15px;
+                color: #313131;
+            }
+            .validateButton {
+                background-color:#ff9900;
+                color:#FFF;
+                display: inline-block;
+                width: 40%;
+                height: 42px;
+                line-height: 42px;
+                border-radius: 0px;
+                font-size: 17px;
+                border: none;
+                border-bottom: 1px solid #ff9900;
+                text-align: center;
+                float:right;
+            }
+            .button:first-child{
+                margin-right: 2%;
+            }
+            
+        }
+    }
+
+

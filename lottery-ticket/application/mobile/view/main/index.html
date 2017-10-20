@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>彩票</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__MOBILE__/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/sm.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/sm-extend.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/my-buttons.css">
+    <link rel="stylesheet" href="__MOBILE__/css/app.css">
+</head>
+<body>
+<div class="page-group">
+    <div class="page" id="main">
+        <header class="bar bar-nav">
+            <h1 class="title">购彩大厅</h1>
+        </header>
+        <div class="content">
+
+            <div class="card">
+                <div class="card-content" id="now-address">
+                    <div class="card-content-inner">
+                        <i class="icon-map-marker"></i> <span data-iden="site">定位中...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">福利彩票</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <table width="100%" style="text-align: center">
+                            <tr>
+                                <td><a href="{{:url('ball/index',['mold'=>'ssq'])}}" class="external"
+                                       data-no-cache="true"><img src="__MOBILE__/img/ssq.png"
+                                                                 style="width: 3rem;height:3rem">
+                                    <p class="p-title">双色球</p></a></td>
+                                <td><a href="{{:url('ball/index',['mold'=>'qlc'])}}" class="external"
+                                       data-no-cache="true"><img src="__MOBILE__/img/qlc.png"
+                                                                 style="width: 3rem;height:3rem">
+                                    <p class="p-title">七乐彩</p></a></td>
+                                <td><a href="{{:url('ball/index',['mold'=>'fc3d'])}}" class="external"
+                                       data-no-cache="true"><img src="__MOBILE__/img/fc3d.png"
+                                                                 style="width: 3rem;height:3rem">
+                                    <p class="p-title">福彩3D</p></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">体育彩票</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <table width="100%" style="text-align: center">
+                            <tr>
+                                <td><a href="{{:url('ball/index',['mold'=>'dlt'])}}" class="external"
+                                       data-no-cache="true"><img src="__MOBILE__/img/dlt.png"
+                                                                 style="width: 3rem;height:3rem">
+                                    <p class="p-title">大乐透</p></a></td>
+                                <td><a href="{{:url('ball/index',['mold'=>'pl3'])}}" class="external"
+                                       data-no-cache="true"><img src="__MOBILE__/img/pl3.png"
+                                                                 style="width: 3rem;height:3rem">
+                                    <p class="p-title">排列三</p></a></td>
+                                <td><a href="{{:url('ball/index',['mold'=>'pl5'])}}" class="external"
+                                       data-no-cache="true"><img src="__MOBILE__/img/pl5.png"
+                                                                 style="width: 3rem;height:3rem">
+                                    <p class="p-title">排列五</p></a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="{{:url('ball/index',['mold'=>'qxc'])}}" class="external"
+                                       data-no-cache="true"><img src="__MOBILE__/img/qxc.png"
+                                                                 style="width: 3rem;height:3rem">
+                                    <p class="p-title">七星彩</p></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div style="margin: 1rem 0;height: 1rem;"></div>
+        </div>
+
+        <nav class="bar bar-tab">
+            <a class="tab-item external active" href="{{:url('main/index')}}">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">购票大厅</span>
+            </a>
+
+            <a class="tab-item external" href="{{:url('bill/car')}}">
+                <span class="icon icon-cart"></span>
+                <span class="tab-label">购物车</span>
+            </a>
+            <a class="tab-item external" href="{{:url('account/center')}}">
+                <span class="icon icon-me"></span>
+                <span class="tab-label">个人中心</span>
+            </a>
+
+        </nav>
+    </div>
+
+    <div class="page" id="select-site">
+
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+            <h1 class='title'>新增地址</h1>
+        </header>
+        <div class="content">
+            <div class="list-block" style="margin: 0.1rem 0">
+                <ul>
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon-map-marker"></i></div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="text" placeholder="请选择城市信息" id="select-city">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon-map-marker"></i></div>
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <input type="text" placeholder="地址" id="site-select">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="site-card-list">
+
+            </div>
+
+            <div class="card" id="no-result" style="display: none">
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        没有检索结果,请确认地址是否正确
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script type='text/javascript' src="__MOBILE__/js/zepto.min.js" charset='utf-8'></script>
+<script type='text/javascript' src="__MOBILE__/js/sm.min.js" charset='utf-8'></script>
+<script type='text/javascript' src='__MOBILE__/js/sm-extend.min.js' charset='utf-8'></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?ak=rwDPE8PpQTK3PLMdYPhRG5pC&v=2.0&s=1"></script>
+<script>
+
+
+    $(function () {
+        var cityList = [
+            '阜阳市', '杭州市', '南京市'
+        ];
+        var geoc = new BMap.Geocoder();
+        var geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function (r) {
+            if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+                sessionStorage.setItem('nowCity', r.address.city);
+                sessionStorage.setItem('nowPoint', JSON.stringify(r.point));
+                console.log(r);
+
+                setLocation(r.point);
+            }
+            else {
+                alert('failed' + this.getStatus());
+            }
+        }, {enableHighAccuracy: true});
+
+
+        //获取地理位置的函数
+        function setLocation(point) {
+            geoc.getLocation(point, function (rs) {
+                console.log('地理位置');
+                console.log(rs);
+                var addComp = rs.addressComponents;
+                var result = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+                $('#now-address').find("[data-iden='site']").html(rs.address);
+
+            });
+        }
+
+
+        $("#select-city").picker({
+            toolbarTemplate: '<header class="bar bar-nav">\
+  <button class="button button-link pull-left"></button>\
+  <button class="button button-link pull-right close-picker">确定</button>\
+  <h1 class="title">请选择城市</h1>\
+  </header>',
+            cols: [
+                {
+                    textAlign: 'center',
+                    values: cityList
+                }
+            ],
+            onClose: function () {
+            }
+        });
+
+
+        $(document).on('click', '#now-address', function () {
+
+            var selectCity = $("#select-city");
+            selectCity.picker("open");
+
+            if (cityList.indexOf(sessionStorage.getItem('nowCity')!==-1)) {
+                selectCity.picker("setValue", [sessionStorage.getItem('nowCity')]);
+            } else {
+                selectCity.picker("setValue", ['杭州市']);
+            }
+
+            $.router.load('#select-site');
+        });
+
+        $(document).on('input', '#site-select', function () {
+
+            var val = $(this).val().trim();
+            if (val.length > 1) {
+                var options = {
+                    onSearchComplete: function (results) {
+                        var html = '';
+                        $("#site-card-list").html('');
+                        if (local.getStatus() === BMAP_STATUS_SUCCESS) {
+
+                            var num = results.getCurrentNumPois();
+
+                            for (i = 0; i < num; i++) {
+                                html += '<div class="card" data-note="' + results.getPoi(i).address + '" data-point=\'' + JSON.stringify(results.getPoi(i).point) + '\' data-title="' + results.getPoi(i).title + '" data-city="' + results.getPoi(i).city + '">' +
+                                    '<div class="card-content">' +
+                                    '<div class="card-content-inner">' +
+                                    '<div> <i class="icon-map-marker"></i> ' + results.getPoi(i).title + '<br/><span style="0.5rem;color: silver;">' + results.getPoi(i).address +
+                                    '</span></div> </div> </div> </div>';
+                            }
+                            $("#site-card-list").html(html);
+
+                            $(document).on('click', '#site-card-list .card', function () {
+
+                                var title = $(this).data('title');
+                                var note = $(this).data('note');
+                                var point = $(this).data('point');
+                                console.log(point);
+//                                var city = $(this).data('city');
+//                                sessionStorage.setItem('nowCity', city);
+
+                                sessionStorage.setItem('nowCity', $('#select-city').val());
+                                sessionStorage.setItem('nowPoint', point);
+                                $("#site-card-list").html('');
+                                var siteInfo = title + ' <span class="hint-font">' + note + '</span>';
+                                $('#now-address').find("[data-iden='site']").html(siteInfo);
+                                $.router.back();
+                            });
+                        }
+
+                        if (html === '') {
+                            $("#no-result").show().find(".card-content-inner").html('没有检索结果');
+                        } else {
+                            $("#no-result").hide();
+                        }
+                    },
+                    //设置每页容量
+                    pageCapacity: 5
+                };
+                // var local = new BMap.LocalSearch('杭州市', options);
+                var local = new BMap.LocalSearch($('#select-city').val(), options);
+                local.search(val);
+            }
+        });
+
+        $.init();
+    });
+
+</script>
+</body>
+</html>

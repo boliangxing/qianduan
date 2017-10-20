@@ -1,0 +1,48 @@
+<import src="../../../common/head.wxml"/>
+<import src="../../../common/foot.wxml"/>
+
+<!--<view class="container">
+  <template is="head" data="{{title: 'sendMessage'}}"/>
+
+  <view class="page-body">
+   <view style="margin-bottom:70px">
+   <image src="/image/6.jpg" class="user-avatar" style="float:left"></image> 
+ 
+   <text style=" display:block">康娜卡姆依</text>
+  <text stlye="display:block;font-variant:small-caps;font-size:10rpx;"> 2017-08-15 19:55 00:00</text>
+   <textarea auto-focus="true" disabled="disabled" value="这里是一楼◎_◎"/> 
+</view>
+ <view >
+            <image src="/image/6.jpg" class="user-avatar"></image> 
+ 
+      <text style="color:#ADADAD;font-weight:bold;font-size:13px;">康娜卡姆依
+ </text>
+          
+</view>
+     
+    </view> 
+  
+    
+      
+   
+
+  <template is="foot"/>
+</view>
+-->
+  
+    
+     <text>{{test}}</text>
+
+         <view class="search"> 
+         <view class="search-select" hidden="{{selectHide}}">
+      
+        </view> 
+        <view>
+            <input class="search-input" placeholder="请输入" auto-focus
+             bindinput="usermsgInput"  value="{{inputValue}}" style="width:200px;height:20px" name="title"/>
+        </view>
+   <button type="primary" bindtap="btn_warn" style="width:80px;height:40px;position: absolute;top: 550px;left:280px"> </button>
+ 
+    </view>  
+
+ 

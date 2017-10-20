@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__MOBILE__/css/sm.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/sm-extend.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/my-buttons.css">
+    <link rel="stylesheet" href="__MOBILE__/css/app.css">
+
+    <script type="text/javascript" src="https://api.map.baidu.com/api?ak=rwDPE8PpQTK3PLMdYPhRG5pC&v=2.0&s=1"></script>
+
+</head>
+<body>
+
+<div class="page-group" id="car">
+    <!-- 单个page ,第一个.page默认被展示-->
+    <div class="page" id="car-page">
+        <!-- 标题栏 -->
+        <header class="bar bar-nav" style="background-color: #ff2222;">
+            <a class="button button-link button-nav pull-left back" style="color:white">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+
+            <h1 class="title" style="color:white">购物车</h1>
+
+            <a class="button button-link button-nav pull-right external" href="{{:url('main/index')}}"
+               style="color:white">
+                <span class="icon-home"></span>
+                返回大厅
+            </a>
+        </header>
+
+
+        <!-- 这里是页面内容区 -->
+        <div class="content" id="car-goods-info">
+            <div id="car-list">
+
+            </div>
+            <div class="card-col-bottom"></div>
+        </div>
+
+        <div class="bar bar-footer" style="height: 2.5rem;background-color: #3c3c3c">
+            <div style="margin-top: .3rem">
+                <!--<a class="button button-dark pull-left"><span class="icon-trash"></span></a>-->
+                <span class="icon pull-left" style="font-size: 0.70rem;font-weight: normal;color: #929292">合计：<span
+                        class="red" id="carTotalFee">0</span>元</span>
+
+                <a class="my-button my-button-caution pull-right" id="clearFee">结算</a>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- About Popup -->
+    <div class="popup car-popup-login">
+        <div class="content-block">
+
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-email"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">手机号</div>
+                                <div class="item-input">
+                                    <input type="number" placeholder="请输入手机号" id="car-login-phone">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">密码</div>
+                                <div class="item-input">
+                                    <input type="password" placeholder="请输入密码" id="car-login-password">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-50"><a class="button button-big button-fill button-danger" id="car-login-btn">登录</a></div>
+                    <div class="col-50"><a class="button button-big button-fill button-success close-popup">取消</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type='text/javascript' src="__MOBILE__/js/zepto.min.js" charset='utf-8'></script>
+<script type='text/javascript' src="__MOBILE__/js/sm.min.js" charset='utf-8'></script>
+<script type='text/javascript' src='__MOBILE__/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="__MOBILE__/js/lodash.min.js"></script>
+<script src="__MOBILE__/js/bill.js"></script>
+<script src="__MOBILE__/js/car.js"></script>
+<script>
+    $(function () {
+       $.init();
+    });
+</script>
+</body>
+</html>

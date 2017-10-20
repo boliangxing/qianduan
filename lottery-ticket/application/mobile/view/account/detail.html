@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__MOBILE__/css/sm.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/sm-extend.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/my-buttons.css">
+    <link rel="stylesheet" href="__MOBILE__/css/app.css">
+</head>
+<body>
+
+<div class="page-group">
+    <div class="page" id="detail">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+            <h1 class="title">订单详情</h1>
+        </header>
+
+        <div class="content">
+            {{volist name="product" id="item"}}
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-content-inner">
+
+                        <!--<span class="red">04 06 11 16 25</span> | <span class="blue">04 06</span>-->
+
+                        {{volist name="item->no_info|json_decode=true" id="val" key="k"}}
+                        <span class="{{$val['color']}}">{{$val['type']|array_column='element'|implode=' '}}</span>{{if condition="$key neq count(json_decode($item->no_info))-1"}} | {{/if}}
+                        {{/volist}}
+
+                        <div class="hint-font">
+                            <span class="lottery-play">{{$item->lottery_type}}-{{$item->play_type}}</span>
+                            期数：{{$item->period}} <span class="bet-num">{{$item->fee/$item->mul}}</span>注 <span
+                                class="fee">{{$item->fee}}</span>元 <span>{{$item->mul}}</span>倍
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            {{/volist}}
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-content-inner hint-font">创建日期：{{$order->update_time}}</div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<!--<script type='text/javascript' src="__MOBILE__/js/zepto.min.js" charset='utf-8'></script>-->
+
+<!--<script type='text/javascript' src="__MOBILE__/js/sm.min.js" charset='utf-8'></script>-->
+<!--<script src="__MOBILE__/js/account.js"></script>-->
+
+</body>
+</html>

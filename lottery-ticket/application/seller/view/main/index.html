@@ -1,0 +1,146 @@
+{{extend name="layout" /}}
+{{block name="css"}}
+<style type="text/css">
+    .my-prompt {
+        padding: 0 20px;
+    }
+
+    .my-panel {
+        margin-bottom: 1px;
+    }
+
+    .gray {
+        font-size: 12px;
+        color: silver;
+    }
+</style>
+{{/block}}
+
+
+{{block name="content"}}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Page Header
+        <small>Optional description</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content container-fluid">
+
+    <div class="col-xs-12">
+        <form role="form">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="address">地址</label>
+                    <input type="text" class="form-control" id="address">
+                    <input type="hidden" name="site-info" id="site-info" value=''>
+                </div>
+
+                <div class="my-prompt" id="my-prompt">
+                    <!--地址提示信息-->
+                </div>
+
+            </div>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">保存</button>
+            </div>
+        </form>
+    </div>
+
+</section>
+{{/block}}
+
+
+{block name="foot"}
+{/block}
+
+{{block name="js"}}
+<script type="text/javascript" src="https://api.map.baidu.com/api?ak=rwDPE8PpQTK3PLMdYPhRG5pC&v=2.0&s=1"></script>
+<script>
+    $(document).on('input', '#address', function () {
+        var words = $(this).val().trim();
+        var myPrompt = $('#my-prompt');
+        var url = "{{:url('main/suggestion')}}";
+        if (words < 2) {
+            myPrompt.html('');
+            return;
+        }
+        $.ajax({
+            data: {words: words},
+            url: url,
+            success: function (result) {
+                console.log(JSON.parse(result.data));
+                if (result.code === 200) {
+                    var dataResult = JSON.parse(result.data);
+                    var html = '';
+                    $.each(dataResult.result, function (index, item) {
+                        html += '<div class="panel panel-default my-panel"><div class="panel-body" data-info=\'' + JSON.stringify(item) + '\'>';
+                        html += '<span data-iden="name">' + item.name + '</span> ' + ' <span class="gray" data-iden="city">' + item.city + '</span>-<span class="gray" data-iden="district">' + item.district + '</span>';
+                        html += '</div></div>';
+                    });
+                    myPrompt.html('');
+                }
+                myPrompt.html(html);
+            }
+        });
+    });
+
+
+    $(document).on('click', '#my-prompt .panel-body', function () {
+        var siteInfo = $(this).data('info');
+
+        console.log();
+        if (!siteInfo.location) {
+            layer.alert('地址所选信息不完善，请提供更能精确位置的地址关键字');
+            return;
+        }
+
+        var title = $(this).find("[data-iden='name']").text();
+        $('#address').val(title);
+        $('#site-info').val(JSON.stringify(siteInfo));
+        $('#my-prompt').html('');
+    });
+
+    var geoc = new BMap.Geocoder();
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function (r) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+            console.log(r);
+            setLocation(r.point);
+            alert('您的位置：' + r.point.lng + ',' + r.point.lat);
+        }
+        else {
+            alert('failed' + this.getStatus());
+        }
+    }, {enableHighAccuracy: true});
+
+
+    //获取地理位置的函数
+    function setLocation(point) {
+        geoc.getLocation(point, function (rs) {
+            console.log(rs);
+            var addComp = rs.addressComponents;
+            var result = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+            //$("#start").val(result);
+            //$("#start_location").val(result);
+            alert("当前的位置为:" + result);
+        });
+    }
+
+    var myCity = new BMap.LocalCity();
+    myCity.get(function (result) {
+        console.log(result);
+    });
+
+
+</script>
+
+{{/block}}

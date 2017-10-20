@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>睿棠服饰</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link rel="stylesheet" href="/dist/style.css">
+</head>
+
+<body>
+    <div id="app">  
+        <router-view></router-view>
+    </div>
+    <script src="/dist/common.js"></script>
+    <script src="/dist/build.js"></script>
+</body>
+
+</html>
+
+
+
+<style lang="less">
+@keyframes slideIn {
+    from {
+        transform: translate3d(100%, 0, 0);
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+.page.slideIn {
+    animation: slideIn .2s forwards;
+}
+
+.page.slideOut {
+    animation: slideOut .2s forwards;
+}
+
+
+
+body {
+  overflow-x: hidden;
+}
+
+.slide-transition {
+  transition: left 0.3s ease;
+  width: 100%;
+}
+
+.slide-enter, .slide-leave {
+  left: 100%;
+}
+
+.slide-leave {
+  left: 100%;
+}
+
+.app-transition {
+  transition: opacity 0.3s ease;
+}
+
+.app-enter, .app-leave {
+  opacity: 0;
+}
+
+</style>

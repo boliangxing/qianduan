@@ -1,0 +1,166 @@
+{{extend name="layout" /}}
+
+{{block name="css"}}
+<link rel="stylesheet" href="__ADMIN__/bower_components/bootstrap-table-master/dist/bootstrap-table.min.css">
+{{/block}}
+{{block name="sidebar-menu"}}
+<!-- Sidebar Menu -->
+<ul class="sidebar-menu" data-widget="tree">
+    <!--<li class="header">HEADER</li>-->
+    <!-- Optionally, you can add icons to the links -->
+
+    <li><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
+    <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+    <li class="treeview active menu-open">
+        <a href="#"><i class="fa fa-link"></i> <span>商户管理</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="active"><a href="{{:url('supplier/index')}}"><i class="fa fa-circle-o"></i> 商户列表</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> 待定</a></li>
+        </ul>
+    </li>
+</ul>
+{{/block}}
+
+{{block name="content"}}
+
+<section class="content-header">
+    <h1>
+        创建云存储
+        <small><i class="my-back" style="">返回</i></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li class="my-back"><a href="javascript:"><i class="fa fa-dashboard"></i> 商户列表</a></li>
+        <li class="active">创建云存储</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+
+    <!--------------------------
+      | Your Page Content Here |
+      -------------------------->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title"></h3>
+                </div>
+
+
+                <div class="box-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">地址</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="address" placeholder="请输入地址">
+                                <input type="hidden" id="address-info">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="remark" class="col-sm-2 control-label">补充备注</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="remark" placeholder="补充备注">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <button type="button" class="btn btn-default" id="save-btn">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+{{/block}}
+
+{{block name="js"}}
+
+<script src="__ADMIN__/bower_components/bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+<script src="__ADMIN__/bower_components/bootstrap-table-master/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="__ADMIN__/bower_components/layer-v3.0.3/layer/layer.js"></script>
+<script src="http://api.map.baidu.com/api?ak=rwDPE8PpQTK3PLMdYPhRG5pC&v=2.0"></script>
+
+
+<script>
+
+    $(function () {
+        var ac = new BMap.Autocomplete(
+            {
+                "input": "address"
+                , "location": '中国'
+            });
+        ac.addEventListener('onconfirm', function (e) {
+            var temp = e.item.value;
+            myValue = temp.city + temp.district + temp.street + temp.business;
+            console.log(temp);
+            var options = {
+                onSearchComplete: function (results) {
+                    console.log(results.getCurrentNumPois());
+                    if (local.getStatus() === BMAP_STATUS_SUCCESS) {
+                        console.log(results.getPoi(0));
+
+                        var jsonStr = {
+                            title: results.getPoi(0).title,
+                            address: results.getPoi(0).address,
+                            point: {
+                                lat: results.getPoi(0).point.lat,
+                                lnt: results.getPoi(0).point.lng
+                            }
+                        };
+
+                        $("#address-info").val(JSON.stringify(jsonStr));
+                    }
+                },
+                pageCapacity: 5
+            };
+            var local = new BMap.LocalSearch(temp.city, options);
+            local.search(myValue);
+
+        });
+
+        $("#save-btn").on('click', function () {
+            var address = $("#address").val().trim();
+            var addressInfo = $("#address-info").val();
+            var errorMsg = '';
+            if (address.length === 0) {
+                errorMsg += '地址不能为空<br/>';
+            }
+            if (addressInfo.length === 0) {
+                errorMsg += '地址获取错误<br/>';
+            }
+            if (errorMsg!=='') {
+                layer.alert(errorMsg,{icon:2});
+                return;
+            }
+            $.ajax({
+                type: 'POST',
+                url:"{{:url('supplier/LbsStoreSave')}}",
+                data: {addressInfo:addressInfo},
+                success: function (result) {
+                    if (result.code===200) {
+                        layer.alert(result.message,{icon:1});
+                    } else {
+                        layer.alert(result.message,{icon:2});
+                    }
+                    console.log(result);
+                }, error: function () {
+                    layer.alert('异步请求失败',{icon:2});
+                }
+            });
+        });
+    });
+</script>
+
+
+{{/block}}
+

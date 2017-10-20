@@ -1,0 +1,437 @@
+﻿
+<!doctype html>
+<html class="no-js fixed-layout">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Brush </title>
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar am-topbar-inverse admin-header">
+  <div class="am-topbar-brand">
+    <strong>Brush</strong> <small>Wap后台管理</small>
+  </div>
+
+  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+    <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+
+      <li class="am-dropdown" data-am-dropdown>
+        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
+        </a>
+        <ul class="am-dropdown-content">
+          <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+        </ul>
+      </li>
+      <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+      <ul class="am-list admin-sidebar-list">
+        <li><a href="admin-index.html"><span class="am-icon-home"></span> 首页</a></li>
+        <li class="admin-parent">
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 页面模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+            <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+
+
+
+          </ul>
+        </li>
+
+        <li><a href="#" id='zhuxiao'><span class="am-icon-sign-out"></span> 注销</a></li>
+      </ul>
+
+
+
+
+    </div>
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
+    <div class="admin-content-body">
+      <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small></small></div>
+      </div>
+
+      <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
+        <li><a href="task/admin-table.html" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>任务操作</a></li>
+       <li><a href="imei/admin-table.html" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>每小时提交机器<br/></a></li>
+        <li>
+          <a href="chat/admin-table.html" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>Chat<br/></a></li>
+        <!--  <li><a href="udid/admin-table.html" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>UDID<br/>3000</a></li>
+      --></ul>
+
+      <div class="am-g">
+
+      </div>
+
+      <div class="am-g">
+        <div class="am-u-md-6">
+
+
+        </div>
+
+        <div class="am-u-md-6">
+
+
+
+        </div>
+      </div>
+      <div class="am-panel am-panel-default">
+        <div id="collapse-panel-2" class="am-in">
+          <table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover">
+            <tbody>
+            <tr>
+
+              <th>AppleID正确数量</th>
+              <th>AppleID错误数量</th>
+              <th>AppleID总数量</th>
+            </tr>
+            <tr>
+              <td id='true'></td>
+              <td id='error'></td>
+              <td id='all'></td>
+            </tr>
+            <tr>
+
+              <th>UDID数量</th>
+              <th>UDID占用</th>
+              <th></th>
+            </tr>
+            <tr>
+              <td id='UDID'></td>
+              <td id='IMEI'></td>
+              <td ></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <footer class="admin-content-footer">
+      <hr>
+      <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+    </footer>
+  </div>
+  <!-- content end -->
+
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../assets/js/jquery-1.8.3.min.js"></script>
+<!--<![endif]-->
+<script src="../assets/js/amazeui.min.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+$('#zhuxiao').click(function(){
+  $.session.remove('user');
+window.location.reload();
+})
+
+
+</script>
+<script>
+(function($){
+
+$.session = {
+
+_id: null,
+
+_cookieCache: undefined,
+
+_init: function()
+{
+if (!window.name) {
+window.name = Math.random();
+}
+this._id = window.name;
+this._initCache();
+
+// See if we've changed protcols
+
+var matches = (new RegExp(this._generatePrefix() + "=([^;]+);")).exec(document.cookie);
+if (matches && document.location.protocol !== matches[1]) {
+this._clearSession();
+for (var key in this._cookieCache) {
+try {
+window.sessionStorage.setItem(key, this._cookieCache[key]);
+} catch (e) {};
+}
+}
+
+document.cookie = this._generatePrefix() + "=" + document.location.protocol + ';path=/;expires=' + (new Date((new Date).getTime() + 120000)).toUTCString();
+
+},
+
+_generatePrefix: function()
+{
+return '__session:' + this._id + ':';
+},
+
+_initCache: function()
+{
+var cookies = document.cookie.split(';');
+this._cookieCache = {};
+for (var i in cookies) {
+var kv = cookies[i].split('=');
+if ((new RegExp(this._generatePrefix() + '.+')).test(kv[0]) && kv[1]) {
+this._cookieCache[kv[0].split(':', 3)[2]] = kv[1];
+}
+}
+},
+
+_setFallback: function(key, value, onceOnly)
+{
+var cookie = this._generatePrefix() + key + "=" + value + "; path=/";
+if (onceOnly) {
+cookie += "; expires=" + (new Date(Date.now() + 120000)).toUTCString();
+}
+document.cookie = cookie;
+this._cookieCache[key] = value;
+return this;
+},
+
+_getFallback: function(key)
+{
+if (!this._cookieCache) {
+this._initCache();
+}
+return this._cookieCache[key];
+},
+
+_clearFallback: function()
+{
+for (var i in this._cookieCache) {
+document.cookie = this._generatePrefix() + i + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+this._cookieCache = {};
+},
+
+_deleteFallback: function(key)
+{
+document.cookie = this._generatePrefix() + key + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+delete this._cookieCache[key];
+},
+
+get: function(key)
+{
+return window.sessionStorage.getItem(key) || this._getFallback(key);
+},
+
+set: function(key, value, onceOnly)
+{
+try {
+window.sessionStorage.setItem(key, value);
+} catch (e) {}
+this._setFallback(key, value, onceOnly || false);
+return this;
+},
+
+'delete': function(key){
+return this.remove(key);
+},
+
+remove: function(key)
+{
+try {
+window.sessionStorage.removeItem(key);
+} catch (e) {};
+this._deleteFallback(key);
+return this;
+},
+
+_clearSession: function()
+{
+try {
+window.sessionStorage.clear();
+} catch (e) {
+for (var i in window.sessionStorage) {
+window.sessionStorage.removeItem(i);
+}
+}
+},
+
+clear: function()
+{
+this._clearSession();
+this._clearFallback();
+return this;
+}
+
+};
+
+$.session._init();
+
+})(jQuery);
+
+
+</script>
+<script >
+var strSession =$.session.get('user');
+
+     if( typeof(strSession) == "undefined")
+     {
+
+
+        window.location.href = '/html/login.html';
+
+      }
+$.ajax({
+        // 传参方式
+        type: 'get',
+       //传参地址
+        url: 'applecount',
+        //参数传递 左边是要接收的  右边是自己上面定义的
+        data:{
+
+        },
+        //参数格式
+        dataType: 'json',
+        cache: false,
+        //错误回调
+        error: function(){
+
+        },
+       //成功回调
+        success:function(json){
+         $('#all').html(json['0']['c'])
+        console.log(json['0']['c'])
+        }
+
+        });
+        $.ajax({
+                // 传参方式
+                type: 'get',
+               //传参地址
+                url: 'udidIMEI',
+                //参数传递 左边是要接收的  右边是自己上面定义的
+                data:{
+
+                },
+                //参数格式
+                dataType: 'json',
+                cache: false,
+                //错误回调
+                error: function(){
+
+                },
+               //成功回调
+                success:function(json){
+                 $('#IMEI').html(json['0']['c'])
+                console.log(json['0']['c'])
+                }
+
+                });
+        $.ajax({
+                // 传参方式
+                type: 'get',
+               //传参地址
+                url: 'udidcount',
+                //参数传递 左边是要接收的  右边是自己上面定义的
+                data:{
+
+                },
+                //参数格式
+                dataType: 'json',
+                cache: false,
+                //错误回调
+                error: function(){
+
+                },
+               //成功回调
+                success:function(json){
+                 $('#UDID').html(json['0']['c'])
+                console.log(json['0']['c'])
+                }
+
+                });
+
+
+        $.ajax({
+                // 传参方式
+                type: 'get',
+               //传参地址
+                url: 'appleerrorcount',
+                //参数传递 左边是要接收的  右边是自己上面定义的
+                data:{
+
+                },
+                //参数格式
+                dataType: 'json',
+                cache: false,
+                //错误回调
+                error: function(){
+
+                },
+               //成功回调
+                success:function(json){
+                $('#error').html(json['0']['c'])
+                  console.log(json['0']['c'])
+                }
+                });
+                $.ajax({
+                        // 传参方式
+                        type: 'get',
+                       //传参地址
+                        url: 'appletruecount',
+                        //参数传递 左边是要接收的  右边是自己上面定义的
+                        data:{
+
+                        },
+                        //参数格式
+                        dataType: 'json',
+                        cache: false,
+                        //错误回调
+                        error: function(){
+
+                        },
+                       //成功回调
+                        success:function(json){
+                          $('#true').html(json['0']['c'])
+  console.log(json['0']['c'])
+
+                        }
+                        });
+
+
+
+</script>
+</body>
+</html>

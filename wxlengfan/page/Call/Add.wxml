@@ -1,0 +1,22 @@
+ <import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+    <view class="page-section">
+
+      <view class="page-section-title">有什么福利要和大家分享嘛^_^</view>
+      <view class="textarea-wrp">
+        <textarea name="remark" auto-focus="true" style="height: 3em" />
+    
+    </view>
+    <!--监听按钮-->
+ <image src="/image/add.png"   bindtap="listenerButtonChooseImage"  style="width:30px;height:30px;display:block" />
+ 
+ <!--通过数据绑定的方式动态获取js数据-->
+ <image src="{{source}}" mode="aspecFill" style="border-radius:4px" /> 
+ 
+      <view><button   style="background:#FFFF6F;color:black;font-weight:blod"  bindtap="tiJiao" >发布</button></view>
+
+   
+  </view>
+
+
+<!--<button   style="width:150px">发布</button>-->

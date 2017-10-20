@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__MOBILE__/css/sm.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/sm-extend.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__MOBILE__/css/my-buttons.css">
+    <link rel="stylesheet" href="__MOBILE__/css/app.css">
+</head>
+<body>
+
+<div class="page-group">
+    <div class="page" id="login">
+        <header class="bar bar-nav" style="background-color: red;">
+            <a class="button button-link button-nav pull-left external" href="{{:url('main/index')}}">
+                <span class="icon icon-left" style="color: white"></span>
+                <span style="color: white">返回</span>
+
+            </a>
+            <h1 class="title" style="color: white">彩票登陆</h1>
+        </header>
+        <div class="content">
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-email"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">手机号</div>
+                                <div class="item-input">
+                                    <input type="number" placeholder="请输入手机号" id="login-phone">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">密码</div>
+                                <div class="item-input">
+                                    <input type="password" placeholder="请输入密码" id="login-password">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100"><a class="button button-big button-fill button-danger" id="login-btn">登录</a></div>
+                    <!--<div class="col-50"><a href="#register" class="button button-big button-fill button-success">注册</a></div>-->
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-50"><a href="#register">快速注册</a></div>
+                    <div class="col-50" style="text-align: right"><a href="#forget">忘记密码</a></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="register">
+        <header class="bar bar-nav" style="background-color: red;">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left" style="color: white"></span>
+                <span style="color: white">返回</span>
+
+            </a>
+            <h1 class="title" style="color: white">彩票注册</h1>
+        </header>
+        <div class="content">
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-email"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">手机号</div>
+                                <div class="item-input">
+                                    <input type="number" placeholder="请输入手机号" name="register-phone" id="register-phone">
+                                </div>
+                                <div class="item-input" style="text-align: right">
+                                    <button class="my-button my-button-primary my-button-small my-button-rounded" style="text-align: right" id="register-smsSend">发送</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">短信验证码</div>
+                                <div class="item-input">
+                                    <input type="number" placeholder="请输入短信验证码" id="register-sms-code">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">验证码</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="请输入验证码" id="register-code">
+                                </div>
+                                <div class="item-input" style="text-align: right">
+                                    <img src="{{:captcha_src(1)}}" onclick="this.src = '{{:captcha_src(1)}}?' + Math.random()">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">密码</div>
+                                <div class="item-input">
+                                    <input type="password" placeholder="请输入密码" id="register-password">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">确认密码</div>
+                                <div class="item-input">
+                                    <input type="password" placeholder="请输入确认密码" class="" id="register-confirm-password">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100"><a class="button button-big button-fill button-success" id="register-btn">注册</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="forget">
+        <header class="bar bar-nav" style="background-color: red;">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left" style="color: white"></span>
+                <span style="color: white">返回</span>
+
+            </a>
+            <h1 class="title" style="color: white">修改密码</h1>
+        </header>
+        <div class="content">
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-email"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">手机号</div>
+                                <div class="item-input">
+                                    <input type="number" placeholder="请输入手机号" name="register-phone" id="forget-phone">
+                                </div>
+                                <div class="item-input" style="text-align: right">
+                                    <button class="my-button my-button-primary my-button-small my-button-rounded" style="text-align: right" id="forget-smsSend">发送</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">短信验证码</div>
+                                <div class="item-input">
+                                    <input type="number" placeholder="请输入短信验证码" id="forget-sms-code">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">验证码</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="请输入验证码" id="forget-code">
+                                </div>
+                                <div class="item-input" style="text-align: right">
+                                    <img src="{{:captcha_src(2)}}" onclick="this.src = '{{:captcha_src(2)}}?' + Math.random()">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">密码</div>
+                                <div class="item-input">
+                                    <input type="password" placeholder="请输入密码" id="forget-password">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-password"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">确认密码</div>
+                                <div class="item-input">
+                                    <input type="password" placeholder="请输入确认密码" class="" id="forget-confirm-password">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100"><a class="button button-big button-fill button-success" id="forget-btn">确定</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type='text/javascript' src="__MOBILE__/js/zepto.min.js" charset='utf-8'></script>
+<script type='text/javascript' src="__MOBILE__/js/sm.min.js" charset='utf-8'></script>
+<script type='text/javascript' src='__MOBILE__/js/sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='__MOBILE__/js/account.js' charset='utf-8'></script>
+</body>
+</html>
